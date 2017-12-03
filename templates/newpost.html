@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 style="text-align: center;margin:30px auto;">Blog Entry</h1>
+    {% if errors|length > 0 %}
+    <span class="error">Something went wrong :(</span>
+        <ul>
+            {% for error in errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/newpost" method='POST'>
+        <label> Title for Blog:
+            <br>
+            <input type="text" name='title' value="{{title_value}}"/><span class="error">{{ title_error }}</span>
+        </label>
+        <br>
+        <br>
+        <label>Text for blog:
+            <br>
+            <textarea name="text" cols="30" rows="10">{{ text_value }}</textarea><span class="error">{{ text_error }}</span>
+        </label>
+        <br>
+        <input type="submit" value='Add Task' />
+    </form>
+
+{% endblock %}
