@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h2>Login</h2>
+<p>Please use the form below to login. If you're a new user, please <a href="/signup">sign up</a>.</p>
+
 <form action="/login" method="POST">
     <table>
         <tr>
-            <td><label for="email">Email: </label></td>
-            <td><input type="text" name="email" id="email"></td>
+            <td><label for="username">username: </label></td>
+            <td><input type="text" name="username" id="username"></td>
         </tr>
         <tr>
             <td><label for="password">Password: </label></td>

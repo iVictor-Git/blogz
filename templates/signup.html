@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/register" method="POST">
+<h2>Register</h2>
+    <p>Please use the form below to make an account. If you're a returning user, please <a href="/login">login</a>.</p>
+
+<form action="/signup" method="POST">
     <table>
         <tr>
-            <td><label for="email">Email: </label></td>
-            <td><input type="text" name="email" id="email"></td>
+            <td><label for="username">Username: </label></td>
+            <td><input type="text" name="username" id="username"></td>
         </tr>
         <tr>
             <td><label for="password">Password: </label></td>
@@ -16,10 +19,11 @@
             <td><input type="password" name="verify" id="verify"></td>
         </tr>
         <tr>
-            <input type="submit" value="Register">
+            <td>
+                <input type="submit" value="Register">
+            </td>
         </tr>
     </table>
 </form>
-
 
 {% endblock %}
