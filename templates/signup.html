@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/register" method="POST">
+    <table>
+        <tr>
+            <td><label for="email">Email: </label></td>
+            <td><input type="text" name="email" id="email"></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password: </label></td>
+            <td><input type="password" name="password" id="password"></td>
+        </tr>
+        <tr>
+            <td><label for="verify">Verify: </label></td>
+            <td><input type="password" name="verify" id="verify"></td>
+        </tr>
+        <tr>
+            <input type="submit" value="Register">
+        </tr>
+    </table>
+</form>
+
+
+%{ endblock %}
