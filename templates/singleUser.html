@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if blogs|length == 0 %}
+        <p>No blogs from this user</p>
+    {% else %}
+
+        {% for blog in blogs %}
+            <h2><a href="#"></a>{{blog.title}}</h2>
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}
