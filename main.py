@@ -33,6 +33,12 @@ class User(db.Model):
         self.username = username
         self.password = password
 
+@app.before_request
+def require_login():
+    allowed = ['login','index', 'signup', 'blog']
+    if request.endpoint not in allowed and 'username' not in session:
+        return redirect('/login')
+
 @app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
 
@@ -54,7 +60,7 @@ def newpost():
     return render_template('newpost.html', title="Build-a-Blog :: New Post")
 
 @app.route('/blog')
-def default():
+def blog():
     blog_id = request.args.get('id')
     if blog_id != None:
         blog = Blog.query.get(blog_id)
@@ -133,10 +139,9 @@ def login():
 
     return render_template('login.html')
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/logout')
 def logout():
