@@ -1,0 +1,27 @@
+nav ul li{
+    display: inline-block;
+    list-style: none;
+}
+
+.error {
+    color: red;
+}
+
+.blog-titles {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.flex-nav {
+    display: inline-flex;
+}
+
+.flex-section {
+    display: flex;
+    width: 50%;
+}
+

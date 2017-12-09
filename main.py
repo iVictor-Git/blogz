@@ -146,7 +146,7 @@ def index():
 @app.route('/logout')
 def logout():
     del session['username']
-    redirect('/blog')
+    return redirect('/blog')
     
 if __name__ == '__main__':
     app.run()

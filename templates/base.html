@@ -2,20 +2,28 @@
 <html>
     <head>
         <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
     </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog" class="error">Main Blog Page</a></li>
-            <li><a href="/newpost">New Post</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="/logout">Log out</a>
-            </li>
-        </ul>
+
+    <!-- TODO figure out why css doesn't automatically being re-applied -->
+    <nav class="flex-nav">
+        <section class="flex-section">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog">Main Blog Page</a></li>
+                <li><a href="/newpost">New Post</a></li>
+            </ul>
+        </section>
+        <section class="flex-section">
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Sign up</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </section>
     </nav>
+    <div class="clear"></div>
 
     {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages|length != 0 %}
