@@ -53,7 +53,7 @@ def newpost():
             flash("Text was left empty")
         if not title or not text:
             return render_template('newpost.html', title_value=title)
-        new_blog = Blog(title, text)
+        new_blog = Blog(title, text, owner)
         db.session.add(new_blog)
         db.session.commit()
         return redirect('/blog?id=' + str(new_blog.id))
@@ -62,9 +62,13 @@ def newpost():
 @app.route('/blog')
 def blog():
     blog_id = request.args.get('id')
+    user_id = request.args.get('user_id')
     if blog_id != None:
         blog = Blog.query.get(blog_id)
         return render_template('ind-blog-page.html', blog = blog)
+    if user_id != None:
+        blogs = Blog.query.filter_by(owner_id=user_id).all()
+        return render_template('blog.html', blogs = blogs)
     return render_template('blog.html', title="Build-a-Blog :: New Post", blogs=getBlogs())
 
 @app.route('/signup', methods=['POST', 'GET'])
@@ -141,7 +145,8 @@ def login():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    users = User.query.all()
+    return render_template('index.html', users=users)
 
 @app.route('/logout')
 def logout():
