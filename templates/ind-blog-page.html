@@ -2,6 +2,7 @@
 
 {% block content %}
     <h2 class="blog-titles">{{ blog.title }}</h2>
+    <p>Written by <a href="/blog?user_id={{blog.owner_id}}">{{blog.owner.username}}</a></p>
     <p>{{ blog.text }}</p>
 
 {% endblock %}
